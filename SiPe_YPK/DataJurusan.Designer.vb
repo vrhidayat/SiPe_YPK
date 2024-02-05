@@ -57,9 +57,11 @@ Partial Class DataJurusan
         TbCariData = New TextBox()
         Label3 = New Label()
         GroupBox1 = New GroupBox()
+        FlowLayoutPanel1 = New FlowLayoutPanel()
         BtnTambah = New Button()
         BtnEdit = New Button()
         BtnHapus = New Button()
+        btnBatal = New Button()
         TbNamaJurusan = New TextBox()
         TbIdJurusan = New TextBox()
         Label5 = New Label()
@@ -85,6 +87,7 @@ Partial Class DataJurusan
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         CType(DataGridJurusan, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox1.SuspendLayout()
+        FlowLayoutPanel1.SuspendLayout()
         SuspendLayout()
         ' 
         ' Sidebar
@@ -414,10 +417,12 @@ Partial Class DataJurusan
         ' 
         ' DataGridJurusan
         ' 
+        DataGridJurusan.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         DataGridJurusan.BackgroundColor = Color.FromArgb(CByte(120), CByte(166), CByte(200))
         DataGridJurusan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridJurusan.Location = New Point(183, 321)
         DataGridJurusan.Name = "DataGridJurusan"
+        DataGridJurusan.RowHeadersVisible = False
         DataGridJurusan.Size = New Size(716, 207)
         DataGridJurusan.TabIndex = 6
         ' 
@@ -440,9 +445,7 @@ Partial Class DataJurusan
         ' 
         ' GroupBox1
         ' 
-        GroupBox1.Controls.Add(BtnTambah)
-        GroupBox1.Controls.Add(BtnEdit)
-        GroupBox1.Controls.Add(BtnHapus)
+        GroupBox1.Controls.Add(FlowLayoutPanel1)
         GroupBox1.Controls.Add(TbNamaJurusan)
         GroupBox1.Controls.Add(TbIdJurusan)
         GroupBox1.Controls.Add(Label5)
@@ -455,11 +458,24 @@ Partial Class DataJurusan
         GroupBox1.TabStop = False
         GroupBox1.Text = "Input Data Jurusan"
         ' 
+        ' FlowLayoutPanel1
+        ' 
+        FlowLayoutPanel1.BackgroundImageLayout = ImageLayout.None
+        FlowLayoutPanel1.Controls.Add(BtnTambah)
+        FlowLayoutPanel1.Controls.Add(BtnEdit)
+        FlowLayoutPanel1.Controls.Add(BtnHapus)
+        FlowLayoutPanel1.Controls.Add(btnBatal)
+        FlowLayoutPanel1.ForeColor = Color.Transparent
+        FlowLayoutPanel1.Location = New Point(338, 44)
+        FlowLayoutPanel1.Name = "FlowLayoutPanel1"
+        FlowLayoutPanel1.Size = New Size(101, 135)
+        FlowLayoutPanel1.TabIndex = 19
+        ' 
         ' BtnTambah
         ' 
         BtnTambah.BackColor = Color.FromArgb(CByte(0), CByte(123), CByte(255))
         BtnTambah.ForeColor = Color.White
-        BtnTambah.Location = New Point(348, 61)
+        BtnTambah.Location = New Point(3, 3)
         BtnTambah.Name = "BtnTambah"
         BtnTambah.Size = New Size(75, 28)
         BtnTambah.TabIndex = 8
@@ -470,7 +486,7 @@ Partial Class DataJurusan
         ' 
         BtnEdit.BackColor = Color.FromArgb(CByte(40), CByte(167), CByte(69))
         BtnEdit.ForeColor = Color.White
-        BtnEdit.Location = New Point(348, 95)
+        BtnEdit.Location = New Point(3, 37)
         BtnEdit.Name = "BtnEdit"
         BtnEdit.Size = New Size(75, 28)
         BtnEdit.TabIndex = 7
@@ -481,23 +497,34 @@ Partial Class DataJurusan
         ' 
         BtnHapus.BackColor = Color.FromArgb(CByte(220), CByte(53), CByte(69))
         BtnHapus.ForeColor = Color.White
-        BtnHapus.Location = New Point(348, 129)
+        BtnHapus.Location = New Point(3, 71)
         BtnHapus.Name = "BtnHapus"
         BtnHapus.Size = New Size(75, 28)
         BtnHapus.TabIndex = 6
         BtnHapus.Text = "Hapus"
         BtnHapus.UseVisualStyleBackColor = False
         ' 
+        ' btnBatal
+        ' 
+        btnBatal.BackColor = Color.Gray
+        btnBatal.ForeColor = Color.White
+        btnBatal.Location = New Point(3, 105)
+        btnBatal.Name = "btnBatal"
+        btnBatal.Size = New Size(75, 28)
+        btnBatal.TabIndex = 9
+        btnBatal.Text = "Batal"
+        btnBatal.UseVisualStyleBackColor = False
+        ' 
         ' TbNamaJurusan
         ' 
-        TbNamaJurusan.Location = New Point(117, 98)
+        TbNamaJurusan.Location = New Point(132, 98)
         TbNamaJurusan.Name = "TbNamaJurusan"
-        TbNamaJurusan.Size = New Size(209, 22)
+        TbNamaJurusan.Size = New Size(194, 22)
         TbNamaJurusan.TabIndex = 4
         ' 
         ' TbIdJurusan
         ' 
-        TbIdJurusan.Location = New Point(117, 64)
+        TbIdJurusan.Location = New Point(132, 64)
         TbIdJurusan.Name = "TbIdJurusan"
         TbIdJurusan.Size = New Size(84, 22)
         TbIdJurusan.TabIndex = 3
@@ -534,6 +561,7 @@ Partial Class DataJurusan
         Controls.Add(Header)
         Controls.Add(Sidebar)
         Name = "DataJurusan"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "DataJurusan"
         Sidebar.ResumeLayout(False)
         PnDashboard.ResumeLayout(False)
@@ -566,6 +594,7 @@ Partial Class DataJurusan
         CType(DataGridJurusan, ComponentModel.ISupportInitialize).EndInit()
         GroupBox1.ResumeLayout(False)
         GroupBox1.PerformLayout()
+        FlowLayoutPanel1.ResumeLayout(False)
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -612,4 +641,6 @@ Partial Class DataJurusan
     Friend WithEvents Label5 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents LbLogout As Label
+    Friend WithEvents btnBatal As Button
+    Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
 End Class

@@ -53,6 +53,11 @@ Partial Class DataSiswa
         PictureBox1 = New PictureBox()
         Label1 = New Label()
         GroupBox1 = New GroupBox()
+        FlowLayoutPanel1 = New FlowLayoutPanel()
+        BtnTambah = New Button()
+        BtnHapus = New Button()
+        BtnEdit = New Button()
+        BtnBatal = New Button()
         tbNisnOld = New TextBox()
         cbSPP = New ComboBox()
         TbAlamat = New TextBox()
@@ -64,9 +69,6 @@ Partial Class DataSiswa
         Label8 = New Label()
         Label7 = New Label()
         Label6 = New Label()
-        BtnTambah = New Button()
-        BtnEdit = New Button()
-        BtnHapus = New Button()
         TbNis = New TextBox()
         TbNisn = New TextBox()
         Label5 = New Label()
@@ -95,6 +97,7 @@ Partial Class DataSiswa
         Header.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox1.SuspendLayout()
+        FlowLayoutPanel1.SuspendLayout()
         CType(DataGridSiswa, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -414,6 +417,7 @@ Partial Class DataSiswa
         ' 
         ' GroupBox1
         ' 
+        GroupBox1.Controls.Add(FlowLayoutPanel1)
         GroupBox1.Controls.Add(tbNisnOld)
         GroupBox1.Controls.Add(cbSPP)
         GroupBox1.Controls.Add(TbAlamat)
@@ -425,9 +429,6 @@ Partial Class DataSiswa
         GroupBox1.Controls.Add(Label8)
         GroupBox1.Controls.Add(Label7)
         GroupBox1.Controls.Add(Label6)
-        GroupBox1.Controls.Add(BtnTambah)
-        GroupBox1.Controls.Add(BtnEdit)
-        GroupBox1.Controls.Add(BtnHapus)
         GroupBox1.Controls.Add(TbNis)
         GroupBox1.Controls.Add(TbNisn)
         GroupBox1.Controls.Add(Label5)
@@ -440,6 +441,62 @@ Partial Class DataSiswa
         GroupBox1.TabStop = False
         GroupBox1.Text = "Input Data Siswa"
         ' 
+        ' FlowLayoutPanel1
+        ' 
+        FlowLayoutPanel1.Controls.Add(BtnTambah)
+        FlowLayoutPanel1.Controls.Add(BtnHapus)
+        FlowLayoutPanel1.Controls.Add(BtnEdit)
+        FlowLayoutPanel1.Controls.Add(BtnBatal)
+        FlowLayoutPanel1.FlowDirection = FlowDirection.RightToLeft
+        FlowLayoutPanel1.Location = New Point(609, 67)
+        FlowLayoutPanel1.Name = "FlowLayoutPanel1"
+        FlowLayoutPanel1.Size = New Size(101, 134)
+        FlowLayoutPanel1.TabIndex = 20
+        ' 
+        ' BtnTambah
+        ' 
+        BtnTambah.BackColor = Color.FromArgb(CByte(0), CByte(123), CByte(255))
+        BtnTambah.ForeColor = Color.White
+        BtnTambah.Location = New Point(23, 3)
+        BtnTambah.Name = "BtnTambah"
+        BtnTambah.Size = New Size(75, 28)
+        BtnTambah.TabIndex = 8
+        BtnTambah.Text = "Tambah"
+        BtnTambah.UseVisualStyleBackColor = False
+        ' 
+        ' BtnHapus
+        ' 
+        BtnHapus.BackColor = Color.FromArgb(CByte(220), CByte(53), CByte(69))
+        BtnHapus.ForeColor = Color.White
+        BtnHapus.Location = New Point(23, 37)
+        BtnHapus.Name = "BtnHapus"
+        BtnHapus.Size = New Size(75, 28)
+        BtnHapus.TabIndex = 6
+        BtnHapus.Text = "Hapus"
+        BtnHapus.UseVisualStyleBackColor = False
+        ' 
+        ' BtnEdit
+        ' 
+        BtnEdit.BackColor = Color.FromArgb(CByte(40), CByte(167), CByte(69))
+        BtnEdit.ForeColor = Color.White
+        BtnEdit.Location = New Point(23, 71)
+        BtnEdit.Name = "BtnEdit"
+        BtnEdit.Size = New Size(75, 28)
+        BtnEdit.TabIndex = 7
+        BtnEdit.Text = "Edit"
+        BtnEdit.UseVisualStyleBackColor = False
+        ' 
+        ' BtnBatal
+        ' 
+        BtnBatal.BackColor = Color.DimGray
+        BtnBatal.ForeColor = Color.White
+        BtnBatal.Location = New Point(23, 105)
+        BtnBatal.Name = "BtnBatal"
+        BtnBatal.Size = New Size(75, 28)
+        BtnBatal.TabIndex = 19
+        BtnBatal.Text = "Batal"
+        BtnBatal.UseVisualStyleBackColor = False
+        ' 
         ' tbNisnOld
         ' 
         tbNisnOld.Location = New Point(117, 31)
@@ -449,6 +506,7 @@ Partial Class DataSiswa
         ' 
         ' cbSPP
         ' 
+        cbSPP.DropDownStyle = ComboBoxStyle.DropDownList
         cbSPP.FormattingEnabled = True
         cbSPP.Location = New Point(409, 99)
         cbSPP.Name = "cbSPP"
@@ -472,6 +530,7 @@ Partial Class DataSiswa
         ' 
         ' CbKelas
         ' 
+        CbKelas.DropDownStyle = ComboBoxStyle.DropDownList
         CbKelas.FormattingEnabled = True
         CbKelas.Location = New Point(117, 164)
         CbKelas.Name = "CbKelas"
@@ -530,39 +589,6 @@ Partial Class DataSiswa
         Label6.TabIndex = 9
         Label6.Text = "Nama Siswa"
         ' 
-        ' BtnTambah
-        ' 
-        BtnTambah.BackColor = Color.FromArgb(CByte(0), CByte(123), CByte(255))
-        BtnTambah.ForeColor = Color.White
-        BtnTambah.Location = New Point(623, 61)
-        BtnTambah.Name = "BtnTambah"
-        BtnTambah.Size = New Size(75, 28)
-        BtnTambah.TabIndex = 8
-        BtnTambah.Text = "Tambah"
-        BtnTambah.UseVisualStyleBackColor = False
-        ' 
-        ' BtnEdit
-        ' 
-        BtnEdit.BackColor = Color.FromArgb(CByte(40), CByte(167), CByte(69))
-        BtnEdit.ForeColor = Color.White
-        BtnEdit.Location = New Point(623, 95)
-        BtnEdit.Name = "BtnEdit"
-        BtnEdit.Size = New Size(75, 28)
-        BtnEdit.TabIndex = 7
-        BtnEdit.Text = "Edit"
-        BtnEdit.UseVisualStyleBackColor = False
-        ' 
-        ' BtnHapus
-        ' 
-        BtnHapus.BackColor = Color.FromArgb(CByte(220), CByte(53), CByte(69))
-        BtnHapus.ForeColor = Color.White
-        BtnHapus.Location = New Point(623, 129)
-        BtnHapus.Name = "BtnHapus"
-        BtnHapus.Size = New Size(75, 28)
-        BtnHapus.TabIndex = 6
-        BtnHapus.Text = "Hapus"
-        BtnHapus.UseVisualStyleBackColor = False
-        ' 
         ' TbNis
         ' 
         TbNis.Location = New Point(117, 98)
@@ -601,6 +627,7 @@ Partial Class DataSiswa
         DataGridSiswa.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridSiswa.Location = New Point(183, 326)
         DataGridSiswa.Name = "DataGridSiswa"
+        DataGridSiswa.RowHeadersVisible = False
         DataGridSiswa.Size = New Size(716, 207)
         DataGridSiswa.TabIndex = 9
         ' 
@@ -678,6 +705,7 @@ Partial Class DataSiswa
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         GroupBox1.ResumeLayout(False)
         GroupBox1.PerformLayout()
+        FlowLayoutPanel1.ResumeLayout(False)
         CType(DataGridSiswa, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
@@ -736,4 +764,6 @@ Partial Class DataSiswa
     Friend WithEvents TbAlamat As TextBox
     Friend WithEvents cbSPP As ComboBox
     Friend WithEvents tbNisnOld As TextBox
+    Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
+    Friend WithEvents BtnBatal As Button
 End Class

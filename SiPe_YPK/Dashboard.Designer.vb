@@ -22,6 +22,7 @@ Partial Class Dashboard
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        components = New ComponentModel.Container()
         Sidebar = New Panel()
         PnDashboard = New Panel()
         PictureBox8 = New PictureBox()
@@ -53,13 +54,13 @@ Partial Class Dashboard
         DataGridAngkatan = New DataGridView()
         Panel4 = New Panel()
         Panel2 = New Panel()
-        Label8 = New Label()
+        LbJumlahKelas = New Label()
         Label11 = New Label()
         Panel1 = New Panel()
-        Label2 = New Label()
+        LbJumlahAngkatan = New Label()
         Label3 = New Label()
         Panel7 = New Panel()
-        LbJumlahKelas = New Label()
+        LbJumlahJurusan = New Label()
         Label6 = New Label()
         Panel6 = New Panel()
         LbJumlahPetugas = New Label()
@@ -72,21 +73,21 @@ Partial Class Dashboard
         PictureBox1 = New PictureBox()
         Label1 = New Label()
         Label9 = New Label()
-        Label12 = New Label()
+        LbNow = New Label()
         Panel3 = New Panel()
-        Label22 = New Label()
+        LbTotalPenerimaan = New Label()
         Label21 = New Label()
         Label19 = New Label()
         Panel8 = New Panel()
-        Label23 = New Label()
+        LbTotalBulanPenerimaan = New Label()
         Label24 = New Label()
         Label25 = New Label()
         Panel9 = New Panel()
-        Label26 = New Label()
+        LbTotalTahunPenerimaan = New Label()
         Label27 = New Label()
         Label28 = New Label()
         Panel10 = New Panel()
-        LbTotalTahunTransaksi = New Label()
+        LbTotalTransaksi = New Label()
         Label30 = New Label()
         Label31 = New Label()
         Panel12 = New Panel()
@@ -94,9 +95,10 @@ Partial Class Dashboard
         Label33 = New Label()
         Label34 = New Label()
         Panel13 = New Panel()
-        Label35 = New Label()
+        LbTotalTahunTransaksi = New Label()
         Label36 = New Label()
         Label37 = New Label()
+        Timer1 = New Timer(components)
         Sidebar.SuspendLayout()
         PnDashboard.SuspendLayout()
         CType(PictureBox8, ComponentModel.ISupportInitialize).BeginInit()
@@ -170,7 +172,7 @@ Partial Class Dashboard
         ' Label20
         ' 
         Label20.AutoSize = True
-        Label20.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label20.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
         Label20.ForeColor = Color.White
         Label20.Location = New Point(45, 10)
         Label20.Name = "Label20"
@@ -202,7 +204,7 @@ Partial Class Dashboard
         ' LbRole
         ' 
         LbRole.AutoSize = True
-        LbRole.Font = New Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LbRole.Font = New Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point)
         LbRole.ForeColor = Color.White
         LbRole.Location = New Point(30, 82)
         LbRole.Name = "LbRole"
@@ -213,7 +215,7 @@ Partial Class Dashboard
         ' LbAdmin
         ' 
         LbAdmin.AutoSize = True
-        LbAdmin.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        LbAdmin.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
         LbAdmin.ForeColor = Color.White
         LbAdmin.Location = New Point(5, 63)
         LbAdmin.Name = "LbAdmin"
@@ -233,7 +235,7 @@ Partial Class Dashboard
         ' Label18
         ' 
         Label18.AutoSize = True
-        Label18.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label18.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
         Label18.ForeColor = Color.White
         Label18.Location = New Point(45, 10)
         Label18.Name = "Label18"
@@ -263,7 +265,7 @@ Partial Class Dashboard
         ' Label17
         ' 
         Label17.AutoSize = True
-        Label17.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label17.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
         Label17.ForeColor = Color.White
         Label17.Location = New Point(45, 10)
         Label17.Name = "Label17"
@@ -293,7 +295,7 @@ Partial Class Dashboard
         ' Label13
         ' 
         Label13.AutoSize = True
-        Label13.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label13.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
         Label13.ForeColor = Color.White
         Label13.Location = New Point(45, 10)
         Label13.Name = "Label13"
@@ -333,7 +335,7 @@ Partial Class Dashboard
         ' Label16
         ' 
         Label16.AutoSize = True
-        Label16.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label16.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
         Label16.ForeColor = Color.White
         Label16.Location = New Point(45, 10)
         Label16.Name = "Label16"
@@ -363,7 +365,7 @@ Partial Class Dashboard
         ' Label15
         ' 
         Label15.AutoSize = True
-        Label15.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label15.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
         Label15.ForeColor = Color.White
         Label15.Location = New Point(45, 9)
         Label15.Name = "Label15"
@@ -393,7 +395,7 @@ Partial Class Dashboard
         ' Label14
         ' 
         Label14.AutoSize = True
-        Label14.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label14.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
         Label14.ForeColor = Color.White
         Label14.Location = New Point(45, 9)
         Label14.Name = "Label14"
@@ -404,7 +406,7 @@ Partial Class Dashboard
         ' Label7
         ' 
         Label7.AutoSize = True
-        Label7.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label7.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point)
         Label7.ForeColor = Color.White
         Label7.Location = New Point(43, 240)
         Label7.Name = "Label7"
@@ -422,10 +424,18 @@ Partial Class Dashboard
         ' 
         ' DataGridAngkatan
         ' 
+        DataGridAngkatan.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         DataGridAngkatan.BackgroundColor = Color.White
         DataGridAngkatan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridAngkatan.Location = New Point(10, 266)
+        DataGridAngkatan.MultiSelect = False
         DataGridAngkatan.Name = "DataGridAngkatan"
+        DataGridAngkatan.ReadOnly = True
+        DataGridAngkatan.RowHeadersVisible = False
+        DataGridAngkatan.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
+        DataGridAngkatan.ScrollBars = ScrollBars.Vertical
+        DataGridAngkatan.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        DataGridAngkatan.ShowEditingIcon = False
         DataGridAngkatan.Size = New Size(180, 180)
         DataGridAngkatan.TabIndex = 8
         ' 
@@ -447,28 +457,28 @@ Partial Class Dashboard
         ' Panel2
         ' 
         Panel2.BackColor = Color.FromArgb(CByte(50), CByte(88), CByte(137))
-        Panel2.Controls.Add(Label8)
+        Panel2.Controls.Add(LbJumlahKelas)
         Panel2.Controls.Add(Label11)
         Panel2.Location = New Point(10, 149)
         Panel2.Name = "Panel2"
         Panel2.Size = New Size(180, 40)
         Panel2.TabIndex = 13
         ' 
-        ' Label8
+        ' LbJumlahKelas
         ' 
-        Label8.AutoSize = True
-        Label8.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label8.ForeColor = Color.White
-        Label8.Location = New Point(13, 12)
-        Label8.Name = "Label8"
-        Label8.Size = New Size(15, 16)
-        Label8.TabIndex = 1
-        Label8.Text = "0"
+        LbJumlahKelas.AutoSize = True
+        LbJumlahKelas.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
+        LbJumlahKelas.ForeColor = Color.White
+        LbJumlahKelas.Location = New Point(13, 12)
+        LbJumlahKelas.Name = "LbJumlahKelas"
+        LbJumlahKelas.Size = New Size(15, 16)
+        LbJumlahKelas.TabIndex = 1
+        LbJumlahKelas.Text = "0"
         ' 
         ' Label11
         ' 
         Label11.AutoSize = True
-        Label11.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label11.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
         Label11.ForeColor = Color.White
         Label11.Location = New Point(126, 12)
         Label11.Name = "Label11"
@@ -479,66 +489,66 @@ Partial Class Dashboard
         ' Panel1
         ' 
         Panel1.BackColor = Color.FromArgb(CByte(50), CByte(88), CByte(137))
-        Panel1.Controls.Add(Label2)
+        Panel1.Controls.Add(LbJumlahAngkatan)
         Panel1.Controls.Add(Label3)
         Panel1.Location = New Point(10, 195)
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(180, 40)
         Panel1.TabIndex = 12
         ' 
-        ' Label2
+        ' LbJumlahAngkatan
         ' 
-        Label2.AutoSize = True
-        Label2.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label2.ForeColor = Color.White
-        Label2.Location = New Point(13, 12)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(15, 16)
-        Label2.TabIndex = 1
-        Label2.Text = "0"
+        LbJumlahAngkatan.AutoSize = True
+        LbJumlahAngkatan.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
+        LbJumlahAngkatan.ForeColor = Color.White
+        LbJumlahAngkatan.Location = New Point(13, 12)
+        LbJumlahAngkatan.Name = "LbJumlahAngkatan"
+        LbJumlahAngkatan.Size = New Size(15, 16)
+        LbJumlahAngkatan.TabIndex = 1
+        LbJumlahAngkatan.Text = "0"
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label3.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
         Label3.ForeColor = Color.White
-        Label3.Location = New Point(126, 12)
+        Label3.Location = New Point(98, 12)
         Label3.Name = "Label3"
-        Label3.Size = New Size(46, 16)
+        Label3.Size = New Size(72, 16)
         Label3.TabIndex = 0
-        Label3.Text = "Kelas"
+        Label3.Text = "Angkatan"
         ' 
         ' Panel7
         ' 
         Panel7.BackColor = Color.FromArgb(CByte(50), CByte(88), CByte(137))
-        Panel7.Controls.Add(LbJumlahKelas)
+        Panel7.Controls.Add(LbJumlahJurusan)
         Panel7.Controls.Add(Label6)
         Panel7.Location = New Point(10, 103)
         Panel7.Name = "Panel7"
         Panel7.Size = New Size(180, 40)
         Panel7.TabIndex = 11
         ' 
-        ' LbJumlahKelas
+        ' LbJumlahJurusan
         ' 
-        LbJumlahKelas.AutoSize = True
-        LbJumlahKelas.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        LbJumlahKelas.ForeColor = Color.White
-        LbJumlahKelas.Location = New Point(13, 12)
-        LbJumlahKelas.Name = "LbJumlahKelas"
-        LbJumlahKelas.Size = New Size(15, 16)
-        LbJumlahKelas.TabIndex = 1
-        LbJumlahKelas.Text = "0"
+        LbJumlahJurusan.AutoSize = True
+        LbJumlahJurusan.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
+        LbJumlahJurusan.ForeColor = Color.White
+        LbJumlahJurusan.Location = New Point(13, 12)
+        LbJumlahJurusan.Name = "LbJumlahJurusan"
+        LbJumlahJurusan.Size = New Size(15, 16)
+        LbJumlahJurusan.TabIndex = 1
+        LbJumlahJurusan.Text = "0"
         ' 
         ' Label6
         ' 
         Label6.AutoSize = True
-        Label6.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label6.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
         Label6.ForeColor = Color.White
-        Label6.Location = New Point(126, 12)
+        Label6.Location = New Point(111, 12)
         Label6.Name = "Label6"
-        Label6.Size = New Size(46, 16)
+        Label6.Size = New Size(61, 16)
         Label6.TabIndex = 0
-        Label6.Text = "Kelas"
+        Label6.Text = "Jurusan"
         ' 
         ' Panel6
         ' 
@@ -553,7 +563,7 @@ Partial Class Dashboard
         ' LbJumlahPetugas
         ' 
         LbJumlahPetugas.AutoSize = True
-        LbJumlahPetugas.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        LbJumlahPetugas.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
         LbJumlahPetugas.ForeColor = Color.White
         LbJumlahPetugas.Location = New Point(13, 12)
         LbJumlahPetugas.Name = "LbJumlahPetugas"
@@ -564,7 +574,7 @@ Partial Class Dashboard
         ' Label5
         ' 
         Label5.AutoSize = True
-        Label5.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label5.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
         Label5.ForeColor = Color.White
         Label5.Location = New Point(108, 12)
         Label5.Name = "Label5"
@@ -585,7 +595,7 @@ Partial Class Dashboard
         ' LbJumlahSiswa
         ' 
         LbJumlahSiswa.AutoSize = True
-        LbJumlahSiswa.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        LbJumlahSiswa.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
         LbJumlahSiswa.ForeColor = Color.White
         LbJumlahSiswa.Location = New Point(13, 12)
         LbJumlahSiswa.Name = "LbJumlahSiswa"
@@ -596,7 +606,7 @@ Partial Class Dashboard
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label4.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
         Label4.ForeColor = Color.White
         Label4.Location = New Point(122, 12)
         Label4.Name = "Label4"
@@ -619,7 +629,7 @@ Partial Class Dashboard
         ' LbLogout
         ' 
         LbLogout.AutoSize = True
-        LbLogout.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        LbLogout.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
         LbLogout.ForeColor = Color.FromArgb(CByte(220), CByte(53), CByte(69))
         LbLogout.Location = New Point(683, 17)
         LbLogout.Name = "LbLogout"
@@ -640,7 +650,7 @@ Partial Class Dashboard
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Font = New Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label1.Font = New Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point)
         Label1.ForeColor = Color.White
         Label1.Location = New Point(59, 11)
         Label1.Name = "Label1"
@@ -651,7 +661,7 @@ Partial Class Dashboard
         ' Label9
         ' 
         Label9.AutoSize = True
-        Label9.Font = New Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label9.Font = New Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point)
         Label9.ForeColor = Color.FromArgb(CByte(50), CByte(88), CByte(137))
         Label9.Location = New Point(409, 71)
         Label9.Name = "Label9"
@@ -659,21 +669,21 @@ Partial Class Dashboard
         Label9.TabIndex = 12
         Label9.Text = "Selamat Datang!"
         ' 
-        ' Label12
+        ' LbNow
         ' 
-        Label12.AutoSize = True
-        Label12.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label12.ForeColor = Color.FromArgb(CByte(50), CByte(88), CByte(137))
-        Label12.Location = New Point(687, 78)
-        Label12.Name = "Label12"
-        Label12.Size = New Size(201, 15)
-        Label12.TabIndex = 13
-        Label12.Text = "Saturday, 27 Januari 2024 23:01:24"
+        LbNow.AutoSize = True
+        LbNow.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        LbNow.ForeColor = Color.FromArgb(CByte(50), CByte(88), CByte(137))
+        LbNow.Location = New Point(687, 78)
+        LbNow.Name = "LbNow"
+        LbNow.Size = New Size(201, 15)
+        LbNow.TabIndex = 13
+        LbNow.Text = "Saturday, 27 Januari 2024 23:01:24"
         ' 
         ' Panel3
         ' 
         Panel3.BackColor = Color.Aquamarine
-        Panel3.Controls.Add(Label22)
+        Panel3.Controls.Add(LbTotalPenerimaan)
         Panel3.Controls.Add(Label21)
         Panel3.Controls.Add(Label19)
         Panel3.Location = New Point(409, 125)
@@ -681,20 +691,21 @@ Partial Class Dashboard
         Panel3.Size = New Size(200, 77)
         Panel3.TabIndex = 14
         ' 
-        ' Label22
+        ' LbTotalPenerimaan
         ' 
-        Label22.AutoSize = True
-        Label22.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label22.Location = New Point(97, 53)
-        Label22.Name = "Label22"
-        Label22.Size = New Size(99, 16)
-        Label22.TabIndex = 2
-        Label22.Text = "Rp. 2.300.000"
+        LbTotalPenerimaan.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        LbTotalPenerimaan.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
+        LbTotalPenerimaan.Location = New Point(98, 53)
+        LbTotalPenerimaan.Name = "LbTotalPenerimaan"
+        LbTotalPenerimaan.Size = New Size(96, 16)
+        LbTotalPenerimaan.TabIndex = 2
+        LbTotalPenerimaan.Text = "0"
+        LbTotalPenerimaan.TextAlign = ContentAlignment.TopRight
         ' 
         ' Label21
         ' 
         Label21.AutoSize = True
-        Label21.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label21.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point)
         Label21.Location = New Point(9, 28)
         Label21.Name = "Label21"
         Label21.Size = New Size(104, 20)
@@ -713,7 +724,7 @@ Partial Class Dashboard
         ' Panel8
         ' 
         Panel8.BackColor = Color.FromArgb(CByte(192), CByte(255), CByte(192))
-        Panel8.Controls.Add(Label23)
+        Panel8.Controls.Add(LbTotalBulanPenerimaan)
         Panel8.Controls.Add(Label24)
         Panel8.Controls.Add(Label25)
         Panel8.Location = New Point(409, 220)
@@ -721,20 +732,21 @@ Partial Class Dashboard
         Panel8.Size = New Size(200, 77)
         Panel8.TabIndex = 15
         ' 
-        ' Label23
+        ' LbTotalBulanPenerimaan
         ' 
-        Label23.AutoSize = True
-        Label23.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label23.Location = New Point(97, 53)
-        Label23.Name = "Label23"
-        Label23.Size = New Size(99, 16)
-        Label23.TabIndex = 2
-        Label23.Text = "Rp. 2.300.000"
+        LbTotalBulanPenerimaan.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        LbTotalBulanPenerimaan.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
+        LbTotalBulanPenerimaan.Location = New Point(98, 53)
+        LbTotalBulanPenerimaan.Name = "LbTotalBulanPenerimaan"
+        LbTotalBulanPenerimaan.Size = New Size(96, 16)
+        LbTotalBulanPenerimaan.TabIndex = 2
+        LbTotalBulanPenerimaan.Text = "0"
+        LbTotalBulanPenerimaan.TextAlign = ContentAlignment.TopRight
         ' 
         ' Label24
         ' 
         Label24.AutoSize = True
-        Label24.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label24.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point)
         Label24.Location = New Point(9, 28)
         Label24.Name = "Label24"
         Label24.Size = New Size(104, 20)
@@ -753,7 +765,7 @@ Partial Class Dashboard
         ' Panel9
         ' 
         Panel9.BackColor = Color.FromArgb(CByte(255), CByte(255), CByte(128))
-        Panel9.Controls.Add(Label26)
+        Panel9.Controls.Add(LbTotalTahunPenerimaan)
         Panel9.Controls.Add(Label27)
         Panel9.Controls.Add(Label28)
         Panel9.Location = New Point(409, 317)
@@ -761,20 +773,21 @@ Partial Class Dashboard
         Panel9.Size = New Size(200, 77)
         Panel9.TabIndex = 16
         ' 
-        ' Label26
+        ' LbTotalTahunPenerimaan
         ' 
-        Label26.AutoSize = True
-        Label26.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label26.Location = New Point(97, 53)
-        Label26.Name = "Label26"
-        Label26.Size = New Size(99, 16)
-        Label26.TabIndex = 2
-        Label26.Text = "Rp. 2.300.000"
+        LbTotalTahunPenerimaan.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        LbTotalTahunPenerimaan.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
+        LbTotalTahunPenerimaan.Location = New Point(98, 51)
+        LbTotalTahunPenerimaan.Name = "LbTotalTahunPenerimaan"
+        LbTotalTahunPenerimaan.Size = New Size(96, 16)
+        LbTotalTahunPenerimaan.TabIndex = 2
+        LbTotalTahunPenerimaan.Text = "0"
+        LbTotalTahunPenerimaan.TextAlign = ContentAlignment.TopRight
         ' 
         ' Label27
         ' 
         Label27.AutoSize = True
-        Label27.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label27.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point)
         Label27.Location = New Point(9, 28)
         Label27.Name = "Label27"
         Label27.Size = New Size(104, 20)
@@ -793,7 +806,7 @@ Partial Class Dashboard
         ' Panel10
         ' 
         Panel10.BackColor = Color.FromArgb(CByte(255), CByte(192), CByte(192))
-        Panel10.Controls.Add(LbTotalTahunTransaksi)
+        Panel10.Controls.Add(LbTotalTransaksi)
         Panel10.Controls.Add(Label30)
         Panel10.Controls.Add(Label31)
         Panel10.Location = New Point(652, 125)
@@ -801,20 +814,20 @@ Partial Class Dashboard
         Panel10.Size = New Size(200, 77)
         Panel10.TabIndex = 17
         ' 
-        ' LbTotalTahunTransaksi
+        ' LbTotalTransaksi
         ' 
-        LbTotalTahunTransaksi.AutoSize = True
-        LbTotalTahunTransaksi.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        LbTotalTahunTransaksi.Location = New Point(171, 53)
-        LbTotalTahunTransaksi.Name = "LbTotalTahunTransaksi"
-        LbTotalTahunTransaksi.Size = New Size(23, 16)
-        LbTotalTahunTransaksi.TabIndex = 2
-        LbTotalTahunTransaksi.Text = "12"
+        LbTotalTransaksi.AutoSize = True
+        LbTotalTransaksi.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
+        LbTotalTransaksi.Location = New Point(171, 53)
+        LbTotalTransaksi.Name = "LbTotalTransaksi"
+        LbTotalTransaksi.Size = New Size(23, 16)
+        LbTotalTransaksi.TabIndex = 2
+        LbTotalTransaksi.Text = "12"
         ' 
         ' Label30
         ' 
         Label30.AutoSize = True
-        Label30.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label30.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point)
         Label30.Location = New Point(9, 28)
         Label30.Name = "Label30"
         Label30.Size = New Size(86, 20)
@@ -844,17 +857,17 @@ Partial Class Dashboard
         ' LbTotalBulanTransaksi
         ' 
         LbTotalBulanTransaksi.AutoSize = True
-        LbTotalBulanTransaksi.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        LbTotalBulanTransaksi.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
         LbTotalBulanTransaksi.Location = New Point(177, 53)
         LbTotalBulanTransaksi.Name = "LbTotalBulanTransaksi"
         LbTotalBulanTransaksi.Size = New Size(15, 16)
         LbTotalBulanTransaksi.TabIndex = 2
-        LbTotalBulanTransaksi.Text = "2"
+        LbTotalBulanTransaksi.Text = "0"
         ' 
         ' Label33
         ' 
         Label33.AutoSize = True
-        Label33.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label33.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point)
         Label33.Location = New Point(9, 28)
         Label33.Name = "Label33"
         Label33.Size = New Size(86, 20)
@@ -873,7 +886,7 @@ Partial Class Dashboard
         ' Panel13
         ' 
         Panel13.BackColor = Color.FromArgb(CByte(128), CByte(128), CByte(255))
-        Panel13.Controls.Add(Label35)
+        Panel13.Controls.Add(LbTotalTahunTransaksi)
         Panel13.Controls.Add(Label36)
         Panel13.Controls.Add(Label37)
         Panel13.Location = New Point(652, 317)
@@ -881,20 +894,20 @@ Partial Class Dashboard
         Panel13.Size = New Size(200, 77)
         Panel13.TabIndex = 19
         ' 
-        ' Label35
+        ' LbTotalTahunTransaksi
         ' 
-        Label35.AutoSize = True
-        Label35.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label35.Location = New Point(177, 53)
-        Label35.Name = "Label35"
-        Label35.Size = New Size(15, 16)
-        Label35.TabIndex = 2
-        Label35.Text = "4"
+        LbTotalTahunTransaksi.AutoSize = True
+        LbTotalTahunTransaksi.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
+        LbTotalTahunTransaksi.Location = New Point(177, 53)
+        LbTotalTahunTransaksi.Name = "LbTotalTahunTransaksi"
+        LbTotalTahunTransaksi.Size = New Size(15, 16)
+        LbTotalTahunTransaksi.TabIndex = 2
+        LbTotalTahunTransaksi.Text = "0"
         ' 
         ' Label36
         ' 
         Label36.AutoSize = True
-        Label36.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label36.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point)
         Label36.Location = New Point(9, 28)
         Label36.Name = "Label36"
         Label36.Size = New Size(86, 20)
@@ -910,7 +923,12 @@ Partial Class Dashboard
         Label37.TabIndex = 0
         Label37.Text = "Total Tahunan"
         ' 
-        ' Main
+        ' Timer1
+        ' 
+        Timer1.Enabled = True
+        Timer1.Interval = 1000
+        ' 
+        ' Dashboard
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
@@ -922,13 +940,14 @@ Partial Class Dashboard
         Controls.Add(Panel9)
         Controls.Add(Panel8)
         Controls.Add(Panel3)
-        Controls.Add(Label12)
+        Controls.Add(LbNow)
         Controls.Add(Label9)
         Controls.Add(Header)
         Controls.Add(Panel4)
         Controls.Add(Label10)
         Controls.Add(Sidebar)
-        Name = "Main"
+        Name = "Dashboard"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "Sistem Informasi SPP YPK"
         Sidebar.ResumeLayout(False)
         PnDashboard.ResumeLayout(False)
@@ -1003,7 +1022,7 @@ Partial Class Dashboard
     Friend WithEvents Label6 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents Label4 As Label
-    Friend WithEvents LbJumlahKelas As Label
+    Friend WithEvents LbJumlahJurusan As Label
     Friend WithEvents LbJumlahPetugas As Label
     Friend WithEvents LbJumlahSiswa As Label
     Friend WithEvents PictureBox2 As PictureBox
@@ -1026,31 +1045,31 @@ Partial Class Dashboard
     Friend WithEvents PictureBox8 As PictureBox
     Friend WithEvents PictureBox9 As PictureBox
     Friend WithEvents Panel2 As Panel
-    Friend WithEvents Label8 As Label
+    Friend WithEvents LbJumlahKelas As Label
     Friend WithEvents Label11 As Label
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents Label2 As Label
+    Friend WithEvents LbJumlahAngkatan As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Header As Panel
     Friend WithEvents LbLogout As Label
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label9 As Label
-    Friend WithEvents Label12 As Label
+    Friend WithEvents LbNow As Label
     Friend WithEvents Panel3 As Panel
-    Friend WithEvents Label22 As Label
+    Friend WithEvents LbTotalPenerimaan As Label
     Friend WithEvents Label21 As Label
     Friend WithEvents Label19 As Label
     Friend WithEvents Panel8 As Panel
-    Friend WithEvents Label23 As Label
+    Friend WithEvents LbTotalBulanPenerimaan As Label
     Friend WithEvents Label24 As Label
     Friend WithEvents Label25 As Label
     Friend WithEvents Panel9 As Panel
-    Friend WithEvents Label26 As Label
+    Friend WithEvents LbTotalTahunPenerimaan As Label
     Friend WithEvents Label27 As Label
     Friend WithEvents Label28 As Label
     Friend WithEvents Panel10 As Panel
-    Friend WithEvents LbTotalTahunTransaksi As Label
+    Friend WithEvents LbTotalTransaksi As Label
     Friend WithEvents Label30 As Label
     Friend WithEvents Label31 As Label
     Friend WithEvents Panel12 As Panel
@@ -1058,8 +1077,8 @@ Partial Class Dashboard
     Friend WithEvents Label33 As Label
     Friend WithEvents Label34 As Label
     Friend WithEvents Panel13 As Panel
-    Friend WithEvents Label35 As Label
+    Friend WithEvents LbTotalTahunTransaksi As Label
     Friend WithEvents Label36 As Label
     Friend WithEvents Label37 As Label
-
+    Friend WithEvents Timer1 As Timer
 End Class

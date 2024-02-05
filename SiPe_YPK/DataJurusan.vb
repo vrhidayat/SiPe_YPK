@@ -1,54 +1,56 @@
-﻿Imports System.Data.Odbc
+﻿Imports System.ComponentModel
+Imports System.Data.Odbc
 Imports System.Security.Cryptography
 
 Public Class DataJurusan
     Dim _id, _nama As String
     Sub formKosong()
-        TbIdJurusan.Clear()
+        TbIdJurusan.Text = "auto"
         TbNamaJurusan.Clear()
     End Sub
+
+    Sub formNormal()
+        TbIdJurusan.Enabled = False
+        TbNamaJurusan.Enabled = False
+    End Sub
+
     Private Sub PnDashboard_Click(sender As Object, e As EventArgs) Handles PnDashboard.Click
         Dashboard.Show()
+        Me.Close()
     End Sub
 
     Private Sub PnKelas_Click(sender As Object, e As EventArgs) Handles PnKelas.Click
         DataKelas.Show()
+        Me.Close()
     End Sub
 
     Private Sub PnSiswa_Click(sender As Object, e As EventArgs) Handles PnSiswa.Click
         DataPetugas.Show()
+        Me.Close()
     End Sub
 
     Private Sub PnPetugas_Click(sender As Object, e As EventArgs) Handles PnPetugas.Click
         DataPetugas.Show()
+        Me.Close()
     End Sub
 
     Private Sub PnTransaksi_Click(sender As Object, e As EventArgs) Handles PnTransaksi.Click
-
+        DataTransaksi.Show()
+        Me.Close()
     End Sub
 
     Private Sub PnLaporan_Click(sender As Object, e As EventArgs) Handles PnLaporan.Click
-
+        Riwayat.Show()
+        Me.Close()
     End Sub
 
     Private Sub DataJurusan_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        TbIdJurusan.Enabled = False
-        BtnEdit.Enabled = False
-        BtnHapus.Enabled = False
+        BtnEdit.Visible = False
+        BtnHapus.Visible = False
+        btnBatal.Visible = False
 
-        Try
-            Call openConn()
-            DA = New OdbcDataAdapter("SELECT * FROM jurusan ORDER BY id_jurusan ASC", Conn)
-            DS = New DataSet
-            DS.Clear()
-            DA.Fill(DS, "jurusan")
-            DataGridJurusan.DataSource = DS.Tables("jurusan")
-            DataGridJurusan.ReadOnly = True
-            Call closeConn()
-        Catch ex As Exception
-            MsgBox(ex.Message)
-            Call closeConn()
-        End Try
+        formNormal()
+        load_jurusan()
     End Sub
 
     Private Sub TbCariData_TextChanged(sender As Object, e As EventArgs) Handles TbCariData.TextChanged
@@ -67,21 +69,36 @@ Public Class DataJurusan
     End Sub
 
     Private Sub BtnTambah_Click(sender As Object, e As EventArgs) Handles BtnTambah.Click
-        Try
-            openConn()
-            SQLInsert = "INSERT INTO jurusan(nama_jurusan) VALUES (?)"
-            CMD = New OdbcCommand(SQLInsert, Conn)
-            With CMD
-                .Parameters.AddWithValue("@nama_jurusan", TbNamaJurusan.Text)
-                .ExecuteNonQuery()
-            End With
-            MsgBox("Data Tersimpan❤️")
-            formKosong()
-        Catch ex As Exception
-            MessageBox.Show("error : " + ex.Message)
-        Finally
-            closeConn()
-        End Try
+        If BtnTambah.Text = "Tambah" Then
+            TbNamaJurusan.Enabled = True
+            btnBatal.Visible = True
+            DataGridJurusan.Enabled = False
+            TbCariData.Enabled = False
+            BtnTambah.Text = "Simpan"
+        ElseIf BtnTambah.Text = "Simpan" Then
+            Try
+                openConn()
+                SQLInsert = "INSERT INTO jurusan(nama_jurusan) VALUES (?)"
+                CMD = New OdbcCommand(SQLInsert, Conn)
+                With CMD
+                    .Parameters.AddWithValue("@nama_jurusan", TbNamaJurusan.Text)
+                    .ExecuteNonQuery()
+                End With
+                MsgBox("Data Tersimpan")
+                formKosong()
+                formNormal()
+                load_jurusan()
+            Catch ex As Exception
+                MessageBox.Show("error : " + ex.Message)
+            Finally
+                closeConn()
+                BtnTambah.Text = "Tambah"
+                btnBatal.Visible = False
+                DataGridJurusan.Enabled = True
+                TbCariData.Enabled = True
+            End Try
+        End If
+
     End Sub
 
     Private Sub DataGridJurusan_SelectionChanged(sender As Object, e As EventArgs) Handles DataGridJurusan.SelectionChanged
@@ -90,12 +107,18 @@ Public Class DataJurusan
         _nama = Convert.ToString(DataGridJurusan.Item(1, i).Value)
     End Sub
 
-    Private Sub DataGridJurusan_DoubleClick(sender As Object, e As EventArgs) Handles DataGridJurusan.DoubleClick
+    Private Sub DataGridJurusan_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridJurusan.CellDoubleClick
         TbIdJurusan.Text = _id
         TbNamaJurusan.Text = _nama
-        BtnTambah.Enabled = False
-        BtnEdit.Enabled = True
-        BtnHapus.Enabled = True
+
+        TbNamaJurusan.Enabled = True
+
+        DataGridJurusan.Enabled = False
+        TbCariData.Enabled = False
+        BtnTambah.Visible = False
+        BtnEdit.Visible = True
+        BtnHapus.Visible = True
+        btnBatal.Visible = True
     End Sub
 
     Private Sub BtnEdit_Click(sender As Object, e As EventArgs) Handles BtnEdit.Click
@@ -110,14 +133,18 @@ Public Class DataJurusan
                 End With
                 MsgBox("Data Updated")
                 formKosong()
-                BtnEdit.Enabled = False
-                BtnHapus.Enabled = False
-                BtnTambah.Enabled = True
+                load_jurusan()
+                BtnEdit.Visible = False
+                BtnHapus.Visible = False
+                BtnTambah.Visible = True
+                btnBatal.Visible = False
             End If
         Catch ex As Exception
             MessageBox.Show("err: " + ex.Message)
         Finally
             closeConn()
+            DataGridJurusan.Enabled = True
+            TbCariData.Enabled = True
         End Try
     End Sub
 
@@ -134,18 +161,37 @@ Public Class DataJurusan
 
                 CMD.ExecuteNonQuery()
 
-                Call formKosong()
                 MsgBox("Data Deleted.")
-                BtnTambah.Enabled = True
-                BtnEdit.Enabled = False
-                BtnHapus.Enabled = False
+                formKosong()
+                formNormal()
+                load_jurusan()
+                BtnTambah.Visible = True
+                BtnEdit.Visible = False
+                BtnHapus.Visible = False
+                btnBatal.Visible = False
             Catch ex As Exception
                 MsgBox("err:" + ex.Message)
             Finally
                 closeConn()
+                DataGridJurusan.Enabled = True
+                TbCariData.Enabled = True
             End Try
         Else
             TbNamaJurusan.Focus()
         End If
+
     End Sub
+
+    Private Sub btnBatal_Click(sender As Object, e As EventArgs) Handles btnBatal.Click
+        formKosong()
+        formNormal()
+        BtnTambah.Visible = True
+        BtnEdit.Visible = False
+        BtnHapus.Visible = False
+        btnBatal.Visible = False
+        DataGridJurusan.Enabled = True
+        TbCariData.Enabled = True
+    End Sub
+
+
 End Class

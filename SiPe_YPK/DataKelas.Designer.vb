@@ -66,6 +66,8 @@ Partial Class DataKelas
         PictureBox8 = New PictureBox()
         Label20 = New Label()
         Sidebar = New Panel()
+        FlowLayoutPanel1 = New FlowLayoutPanel()
+        BtnBatal = New Button()
         GroupBox1.SuspendLayout()
         CType(DataGridKelas, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
@@ -87,15 +89,14 @@ Partial Class DataKelas
         PnDashboard.SuspendLayout()
         CType(PictureBox8, ComponentModel.ISupportInitialize).BeginInit()
         Sidebar.SuspendLayout()
+        FlowLayoutPanel1.SuspendLayout()
         SuspendLayout()
         ' 
         ' GroupBox1
         ' 
+        GroupBox1.Controls.Add(FlowLayoutPanel1)
         GroupBox1.Controls.Add(CbJurusan)
         GroupBox1.Controls.Add(Label6)
-        GroupBox1.Controls.Add(BtnTambah)
-        GroupBox1.Controls.Add(BtnEdit)
-        GroupBox1.Controls.Add(BtnHapus)
         GroupBox1.Controls.Add(TbNamaKelas)
         GroupBox1.Controls.Add(TbIdKelas)
         GroupBox1.Controls.Add(Label5)
@@ -130,7 +131,7 @@ Partial Class DataKelas
         ' 
         BtnTambah.BackColor = Color.FromArgb(CByte(0), CByte(123), CByte(255))
         BtnTambah.ForeColor = Color.White
-        BtnTambah.Location = New Point(348, 61)
+        BtnTambah.Location = New Point(3, 3)
         BtnTambah.Name = "BtnTambah"
         BtnTambah.Size = New Size(75, 28)
         BtnTambah.TabIndex = 8
@@ -141,7 +142,7 @@ Partial Class DataKelas
         ' 
         BtnEdit.BackColor = Color.FromArgb(CByte(40), CByte(167), CByte(69))
         BtnEdit.ForeColor = Color.White
-        BtnEdit.Location = New Point(348, 95)
+        BtnEdit.Location = New Point(3, 37)
         BtnEdit.Name = "BtnEdit"
         BtnEdit.Size = New Size(75, 28)
         BtnEdit.TabIndex = 7
@@ -152,7 +153,7 @@ Partial Class DataKelas
         ' 
         BtnHapus.BackColor = Color.FromArgb(CByte(220), CByte(53), CByte(69))
         BtnHapus.ForeColor = Color.White
-        BtnHapus.Location = New Point(348, 129)
+        BtnHapus.Location = New Point(3, 71)
         BtnHapus.Name = "BtnHapus"
         BtnHapus.Size = New Size(75, 28)
         BtnHapus.TabIndex = 6
@@ -221,10 +222,12 @@ Partial Class DataKelas
         ' 
         ' DataGridKelas
         ' 
+        DataGridKelas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         DataGridKelas.BackgroundColor = Color.FromArgb(CByte(120), CByte(166), CByte(200))
         DataGridKelas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridKelas.Location = New Point(183, 326)
         DataGridKelas.Name = "DataGridKelas"
+        DataGridKelas.RowHeadersVisible = False
         DataGridKelas.Size = New Size(716, 207)
         DataGridKelas.TabIndex = 23
         ' 
@@ -542,6 +545,28 @@ Partial Class DataKelas
         Sidebar.Size = New Size(168, 540)
         Sidebar.TabIndex = 4
         ' 
+        ' FlowLayoutPanel1
+        ' 
+        FlowLayoutPanel1.Controls.Add(BtnTambah)
+        FlowLayoutPanel1.Controls.Add(BtnEdit)
+        FlowLayoutPanel1.Controls.Add(BtnHapus)
+        FlowLayoutPanel1.Controls.Add(BtnBatal)
+        FlowLayoutPanel1.Location = New Point(338, 56)
+        FlowLayoutPanel1.Name = "FlowLayoutPanel1"
+        FlowLayoutPanel1.Size = New Size(101, 137)
+        FlowLayoutPanel1.TabIndex = 24
+        ' 
+        ' BtnBatal
+        ' 
+        BtnBatal.BackColor = Color.DimGray
+        BtnBatal.ForeColor = Color.White
+        BtnBatal.Location = New Point(3, 105)
+        BtnBatal.Name = "BtnBatal"
+        BtnBatal.Size = New Size(75, 28)
+        BtnBatal.TabIndex = 9
+        BtnBatal.Text = "Batal"
+        BtnBatal.UseVisualStyleBackColor = False
+        ' 
         ' DataKelas
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -556,6 +581,7 @@ Partial Class DataKelas
         Controls.Add(Header)
         Controls.Add(Sidebar)
         Name = "DataKelas"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "DataKelas"
         GroupBox1.ResumeLayout(False)
         GroupBox1.PerformLayout()
@@ -588,6 +614,7 @@ Partial Class DataKelas
         PnDashboard.PerformLayout()
         CType(PictureBox8, ComponentModel.ISupportInitialize).EndInit()
         Sidebar.ResumeLayout(False)
+        FlowLayoutPanel1.ResumeLayout(False)
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -635,4 +662,6 @@ Partial Class DataKelas
     Friend WithEvents PictureBox8 As PictureBox
     Friend WithEvents Label20 As Label
     Friend WithEvents Sidebar As Panel
+    Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
+    Friend WithEvents BtnBatal As Button
 End Class

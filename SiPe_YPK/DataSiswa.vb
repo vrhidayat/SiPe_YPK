@@ -6,6 +6,7 @@ Public Class DataSiswa
 
     Sub formKosong()
         'Membuat Sub Prosedure untuk Mengosongkan Object
+        tbNisnOld.Clear()
         TbNisn.Clear()
         TbNis.Clear()
         TbNamaSiswa.Clear()
@@ -15,6 +16,24 @@ Public Class DataSiswa
         TbNoTelp.Clear()
     End Sub
 
+    Sub formNormal()
+        TbNisn.Enabled = False
+        TbNis.Enabled = False
+        TbNamaSiswa.Enabled = False
+        CbKelas.Enabled = False
+        cbSPP.Enabled = False
+        TbAlamat.Enabled = False
+        TbNoTelp.Enabled = False
+    End Sub
+    Sub formOpen()
+        TbNisn.Enabled = True
+        TbNis.Enabled = True
+        TbNamaSiswa.Enabled = True
+        CbKelas.Enabled = True
+        cbSPP.Enabled = True
+        TbAlamat.Enabled = True
+        TbNoTelp.Enabled = True
+    End Sub
     Sub getKelas()
         Try
             DA = New OdbcDataAdapter("SELECT * FROM kelas", Conn)
@@ -37,7 +56,7 @@ Public Class DataSiswa
             cbSPP.DataSource = DS.Tables("spp")
             cbSPP.DisplayMember = "tahun"
             cbSPP.ValueMember = "id_spp"
-            cbSPP.SelectedIndex = -1
+            CbKelas.SelectedIndex = -1
         Catch ex As Exception
             MessageBox.Show("Error: " + ex.Message)
         End Try
@@ -45,77 +64,81 @@ Public Class DataSiswa
 
     Private Sub PnDashboard_Click(sender As Object, e As EventArgs) Handles PnDashboard.Click
         Dashboard.Show()
-        Me.Hide()
+        Me.Close()
     End Sub
     Private Sub PnJurusan_Click(sender As Object, e As EventArgs) Handles PnJurusan.Click
         DataJurusan.Show()
-        Me.Hide()
+        Me.Close()
     End Sub
     Private Sub PnKelas_Click(sender As Object, e As EventArgs) Handles PnKelas.Click
         DataKelas.Show()
-        Me.Hide()
+        Me.Close()
     End Sub
 
     Private Sub PnPetugas_Click(sender As Object, e As EventArgs) Handles PnPetugas.Click
         DataPetugas.Show()
-        Me.Hide()
+        Me.Close()
     End Sub
 
     Private Sub PnTransaksi_Click(sender As Object, e As EventArgs) Handles PnTransaksi.Click
-
+        DataTransaksi.Show()
+        Me.Close()
     End Sub
 
     Private Sub PnLaporan_Click(sender As Object, e As EventArgs) Handles PnLaporan.Click
-
-    End Sub
-    Private Sub LbLogout_Click(sender As Object, e As EventArgs) Handles LbLogout.Click
-
+        Riwayat.Show()
+        Me.Close()
     End Sub
 
     Private Sub DataSiswa_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        BtnEdit.Enabled = False
-        BtnHapus.Enabled = False
-        tbNisnOld.Visible = False
-        getKelas()
-        getSPP()
+        BtnEdit.Visible = False
+        BtnHapus.Visible = False
+        BtnBatal.Visible = False
 
-        Try
-            Call openConn()
-            DA = New OdbcDataAdapter("SELECT * FROM siswa ORDER BY nisn ASC", Conn)
-            DS = New DataSet
-            DS.Clear()
-            DA.Fill(DS, "siswa")
-            DataGridSiswa.DataSource = DS.Tables("siswa")
-            DataGridSiswa.ReadOnly = True
-            Call closeConn()
-        Catch ex As Exception
-            MsgBox(ex.Message)
-            Call closeConn()
-        End Try
+        tbNisnOld.Visible = False
+
+        formNormal()
+        load_siswa()
     End Sub
 
     Private Sub BtnTambah_Click(sender As Object, e As EventArgs) Handles BtnTambah.Click
-        Try
+        If BtnTambah.Text = "Tambah" Then
+            formOpen()
+            BtnBatal.Visible = True
+            DataGridSiswa.Enabled = False
+            TbCariData.Enabled = False
+            BtnTambah.Text = "Simpan"
             openConn()
-            SQLInsert = "INSERT INTO siswa VALUES (?,?,?,?,?,?,?)"
-            CMD = New OdbcCommand(SQLInsert, Conn)
-            With CMD
-                .Parameters.AddWithValue("@nisn", TbNisn.Text)
-                .Parameters.AddWithValue("@nis", TbNis.Text)
-                .Parameters.AddWithValue("@nama", TbNamaSiswa.Text)
-                .Parameters.AddWithValue("@id_kelas", CbKelas.SelectedItem)
-                .Parameters.AddWithValue("@no_telp", TbNoTelp.Text)
-                .Parameters.AddWithValue("@id_spp", cbSPP.SelectedItem)
-                .Parameters.AddWithValue("@alamat", TbAlamat.Text)
-                .ExecuteNonQuery()
-            End With
-            MsgBox("Data Tersimpan❤️")
-            formKosong()
-        Catch ex As Exception
-            MessageBox.Show("error : " + ex.Message)
-        Finally
-            closeConn()
-        End Try
+            getKelas()
+            getSPP()
+        ElseIf BtnTambah.Text = "Simpan" Then
+            Try
+                SQLInsert = "INSERT INTO siswa VALUES (?,?,?,?,?,?,?)"
+                CMD = New OdbcCommand(SQLInsert, Conn)
+                With CMD
+                    .Parameters.AddWithValue("@nisn", TbNisn.Text)
+                    .Parameters.AddWithValue("@nis", TbNis.Text)
+                    .Parameters.AddWithValue("@nama", TbNamaSiswa.Text)
+                    .Parameters.AddWithValue("@id_kelas", CbKelas.SelectedItem)
+                    .Parameters.AddWithValue("@no_telp", TbNoTelp.Text)
+                    .Parameters.AddWithValue("@id_spp", cbSPP.SelectedItem)
+                    .Parameters.AddWithValue("@alamat", TbAlamat.Text)
+                    .ExecuteNonQuery()
+                End With
+                MsgBox("Data Tersimpan❤️")
+                formKosong()
+                formNormal()
+                load_siswa()
+            Catch ex As Exception
+                MessageBox.Show("error : " + ex.Message)
+            Finally
+                closeConn()
+                BtnTambah.Text = "Tambah"
+                BtnBatal.Visible = False
+                DataGridSiswa.Enabled = True
+                TbCariData.Enabled = True
+            End Try
+        End If
     End Sub
 
     Private Sub TbCariData_TextChanged(sender As Object, e As EventArgs) Handles TbCariData.TextChanged
@@ -144,7 +167,9 @@ Public Class DataSiswa
         _id_spp = DataGridSiswa.Item(6, i).Value
     End Sub
 
-    Private Sub DataGridSiswa_DoubleClick(sender As Object, e As EventArgs) Handles DataGridSiswa.DoubleClick
+    Private Sub DataGridSiswa_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridSiswa.CellDoubleClick
+        getSPP()
+        getKelas()
         TbNisn.Text = _nisn
         tbNisnOld.Text = _nisn
         TbNis.Text = _nis
@@ -153,9 +178,15 @@ Public Class DataSiswa
         TbAlamat.Text = _alamat
         TbNoTelp.Text = _no_telp
         cbSPP.SelectedValue = _id_spp
-        BtnTambah.Enabled = False
-        BtnEdit.Enabled = True
-        BtnHapus.Enabled = True
+
+        formOpen()
+
+        DataGridSiswa.Enabled = False
+        TbCariData.Enabled = False
+        BtnTambah.Visible = False
+        BtnEdit.Visible = True
+        BtnHapus.Visible = True
+        BtnBatal.Visible = True
     End Sub
 
     Private Sub BtnEdit_Click(sender As Object, e As EventArgs) Handles BtnEdit.Click
@@ -176,14 +207,19 @@ Public Class DataSiswa
                 End With
                 MsgBox("Data Updated")
                 formKosong()
-                BtnEdit.Enabled = False
-                BtnHapus.Enabled = False
-                BtnTambah.Enabled = True
+                load_siswa()
+                formNormal()
+                BtnEdit.Visible = False
+                BtnHapus.Visible = False
+                BtnTambah.Visible = True
+                BtnBatal.Visible = False
             End If
         Catch ex As Exception
             MessageBox.Show("err: " + ex.Message)
         Finally
             closeConn()
+            DataGridSiswa.Enabled = True
+            TbCariData.Enabled = True
         End Try
     End Sub
 
@@ -200,18 +236,35 @@ Public Class DataSiswa
 
                 CMD.ExecuteNonQuery()
 
-                Call formKosong()
                 MsgBox("Data Deleted.")
-                BtnTambah.Enabled = True
-                BtnEdit.Enabled = False
-                BtnHapus.Enabled = False
+                formKosong()
+                formNormal()
+                load_siswa()
+                BtnTambah.Visible = True
+                BtnEdit.Visible = False
+                BtnHapus.Visible = False
+                BtnBatal.Visible = False
             Catch ex As Exception
                 MsgBox("err:" + ex.Message)
             Finally
                 closeConn()
+                DataGridSiswa.Enabled = True
+                TbCariData.Enabled = True
             End Try
         Else
             TbNisn.Focus()
         End If
     End Sub
+
+    Private Sub btnBatal_Click(sender As Object, e As EventArgs) Handles BtnBatal.Click
+        formKosong()
+        formNormal()
+        BtnTambah.Visible = True
+        BtnEdit.Visible = False
+        BtnHapus.Visible = False
+        BtnBatal.Visible = False
+        DataGridSiswa.Enabled = True
+        TbCariData.Enabled = True
+    End Sub
+
 End Class

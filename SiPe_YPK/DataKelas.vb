@@ -3,11 +3,16 @@
 Public Class DataKelas
     Dim _id, _nama, _jurusan As String
     Sub formKosong()
-        TbIdKelas.Clear()
+        TbIdKelas.Text = "auto"
         TbNamaKelas.Clear()
         CbJurusan.DataSource = Nothing
     End Sub
 
+    Sub formNormal()
+        TbIdKelas.Enabled = False
+        TbNamaKelas.Enabled = False
+        CbJurusan.Enabled = False
+    End Sub
     Sub getJurusan()
         Try
             DA = New OdbcDataAdapter("SELECT * FROM jurusan", Conn)
@@ -28,45 +33,35 @@ Public Class DataKelas
     End Sub
     Private Sub PnJurusan_Click(sender As Object, e As EventArgs) Handles PnJurusan.Click
         DataJurusan.Show()
-        Me.Hide()
+        Me.Close()
     End Sub
     Private Sub PnSiswa_Click(sender As Object, e As EventArgs) Handles PnSiswa.Click
         DataSiswa.Show()
-        Me.Hide()
+        Me.Close()
     End Sub
 
     Private Sub PnPetugas_Click(sender As Object, e As EventArgs) Handles PnPetugas.Click
         DataPetugas.Show()
-        Me.Hide()
+        Me.Close()
     End Sub
 
     Private Sub PnTransaksi_Click(sender As Object, e As EventArgs) Handles PnTransaksi.Click
-
+        DataTransaksi.Show()
+        Me.Close()
     End Sub
 
     Private Sub PnLaporan_Click(sender As Object, e As EventArgs) Handles PnLaporan.Click
-
+        Riwayat.Show()
+        Me.Close()
     End Sub
 
     Private Sub DataKelas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        TbIdKelas.Enabled = False
-        BtnEdit.Enabled = False
-        BtnHapus.Enabled = False
-        getJurusan()
+        BtnEdit.Visible = False
+        BtnHapus.Visible = False
+        BtnBatal.Visible = False
 
-        Try
-            Call openConn()
-            DA = New OdbcDataAdapter("SELECT * FROM kelas ORDER BY id_kelas ASC", Conn)
-            DS = New DataSet
-            DS.Clear()
-            DA.Fill(DS, "kelas")
-            DataGridKelas.DataSource = DS.Tables("kelas")
-            DataGridKelas.ReadOnly = True
-            Call closeConn()
-        Catch ex As Exception
-            MsgBox(ex.Message)
-            Call closeConn()
-        End Try
+        formNormal()
+        load_kelas()
     End Sub
 
     Private Sub TbCariData_TextChanged(sender As Object, e As EventArgs) Handles TbCariData.TextChanged
@@ -85,23 +80,38 @@ Public Class DataKelas
     End Sub
 
     Private Sub BtnTambah_Click(sender As Object, e As EventArgs) Handles BtnTambah.Click
-        Try
-            openConn()
-            SQLInsert = "INSERT INTO kelas(nama_kelas, id_jurusan) VALUES (?,?)"
-            CMD = New OdbcCommand(SQLInsert, Conn)
-            With CMD
-                '.Parameters.AddWithValue("@id_kelas", tbi.Text)
-                .Parameters.AddWithValue("@nama_kelas", TbNamaKelas.Text)
-                .Parameters.AddWithValue("@id_jurusan", CbJurusan.SelectedValue)
-                .ExecuteNonQuery()
-            End With
-            MsgBox("Data Tersimpan❤️")
-            formKosong()
-        Catch ex As Exception
-            MessageBox.Show("error : " + ex.Message)
-        Finally
-            closeConn()
-        End Try
+        If BtnTambah.Text = "Tambah" Then
+            TbNamaKelas.Enabled = True
+            CbJurusan.Enabled = True
+            BtnBatal.Visible = True
+            DataGridKelas.Enabled = False
+            TbCariData.Enabled = False
+            getJurusan()
+            BtnTambah.Text = "Simpan"
+        ElseIf BtnTambah.Text = "Simpan" Then
+            Try
+                openConn()
+                SQLInsert = "INSERT INTO kelas(nama_kelas, id_jurusan) VALUES (?,?)"
+                CMD = New OdbcCommand(SQLInsert, Conn)
+                With CMD
+                    '.Parameters.AddWithValue("@id_kelas", tbi.Text)
+                    .Parameters.AddWithValue("@nama_kelas", TbNamaKelas.Text)
+                    .Parameters.AddWithValue("@id_jurusan", CbJurusan.SelectedValue)
+                    .ExecuteNonQuery()
+                End With
+                MsgBox("Data Tersimpan❤️")
+                formKosong()
+                load_kelas()
+            Catch ex As Exception
+                MessageBox.Show("error : " + ex.Message)
+            Finally
+                closeConn()
+                BtnTambah.Text = "Tambah"
+                BtnBatal.Visible = False
+                DataGridKelas.Enabled = True
+                TbCariData.Enabled = True
+            End Try
+        End If
     End Sub
 
     Private Sub DataGridKelas_SelectionChanged(sender As Object, e As EventArgs) Handles DataGridKelas.SelectionChanged
@@ -111,18 +121,28 @@ Public Class DataKelas
         _jurusan = DataGridKelas.Item(2, i).Value
     End Sub
 
-    Private Sub DataGridKelas_DoubleClick(sender As Object, e As EventArgs) Handles DataGridKelas.DoubleClick
+    Private Sub DataGridKelas_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridKelas.CellDoubleClick
         TbIdKelas.Text = _id
         TbNamaKelas.Text = _nama
         CbJurusan.SelectedValue = _jurusan
-        BtnTambah.Enabled = False
-        BtnEdit.Enabled = True
-        BtnHapus.Enabled = True
+
+        TbIdKelas.Enabled = True
+        TbNamaKelas.Enabled = True
+        CbJurusan.Enabled = True
+
+        DataGridKelas.Enabled = False
+        TbCariData.Enabled = False
+        BtnTambah.Visible = False
+        BtnEdit.Visible = True
+        BtnHapus.Visible = True
+        BtnBatal.Visible = True
+        getJurusan()
     End Sub
 
     Private Sub BtnEdit_Click(sender As Object, e As EventArgs) Handles BtnEdit.Click
         Try
             openConn()
+
             If MsgBox("Are you sure you want to update the data?", vbYesNo + vbQuestion) = vbYes Then
                 SQLUpdate = "UPDATE kelas set nama_kelas= ?, id_jurusan= ? WHERE id_kelas like '" & TbIdKelas.Text & "'"
                 CMD = New OdbcCommand(SQLUpdate, Conn)
@@ -133,14 +153,18 @@ Public Class DataKelas
                 End With
                 MsgBox("Data Updated")
                 formKosong()
-                BtnEdit.Enabled = False
-                BtnHapus.Enabled = False
-                BtnTambah.Enabled = True
+                load_kelas()
+                BtnEdit.Visible = False
+                BtnHapus.Visible = False
+                BtnTambah.Visible = True
+                BtnBatal.Visible = False
             End If
         Catch ex As Exception
             MessageBox.Show("err: " + ex.Message)
         Finally
             closeConn()
+            DataGridKelas.Enabled = True
+            TbCariData.Enabled = True
         End Try
     End Sub
 
@@ -157,18 +181,33 @@ Public Class DataKelas
 
                 CMD.ExecuteNonQuery()
 
-                Call formKosong()
                 MsgBox("Data Deleted.")
-                BtnTambah.Enabled = True
-                BtnEdit.Enabled = False
-                BtnHapus.Enabled = False
+                formKosong()
+                load_kelas()
+                BtnTambah.Visible = True
+                BtnEdit.Visible = False
+                BtnHapus.Visible = False
+                BtnBatal.Visible = False
             Catch ex As Exception
                 MsgBox("err:" + ex.Message)
             Finally
                 closeConn()
+                DataGridKelas.Enabled = True
+                TbCariData.Enabled = True
             End Try
         Else
             TbNamaKelas.Focus()
         End If
+
+    End Sub
+    Private Sub btnBatal_Click(sender As Object, e As EventArgs) Handles BtnBatal.Click
+        formKosong()
+        formNormal()
+        BtnTambah.Visible = True
+        BtnEdit.Visible = False
+        BtnHapus.Visible = False
+        BtnBatal.Visible = False
+        DataGridKelas.Enabled = True
+        TbCariData.Enabled = True
     End Sub
 End Class

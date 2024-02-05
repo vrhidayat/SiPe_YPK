@@ -33,8 +33,8 @@ Partial Class DataPetugas
         Label8 = New Label()
         Label7 = New Label()
         Label6 = New Label()
-        Button2 = New Button()
-        Button1 = New Button()
+        BtnTambah = New Button()
+        BtnEdit = New Button()
         BtnHapus = New Button()
         TbUsername = New TextBox()
         TbIdPetugas = New TextBox()
@@ -45,31 +45,33 @@ Partial Class DataPetugas
         DataGridPetugas = New DataGridView()
         Label2 = New Label()
         PnJurusan = New Panel()
-        Label14 = New Label()
         PictureBox2 = New PictureBox()
+        Label14 = New Label()
         PnKelas = New Panel()
-        Label15 = New Label()
         PictureBox3 = New PictureBox()
+        Label15 = New Label()
         PnSiswa = New Panel()
-        Label16 = New Label()
         PictureBox4 = New PictureBox()
+        Label16 = New Label()
         PnPetugas = New Panel()
-        PictureBox5 = New PictureBox()
         Label13 = New Label()
+        PictureBox5 = New PictureBox()
         PnTransaksi = New Panel()
-        PictureBox6 = New PictureBox()
         Label17 = New Label()
+        PictureBox6 = New PictureBox()
         PnLaporan = New Panel()
-        PictureBox7 = New PictureBox()
         Label18 = New Label()
+        PictureBox7 = New PictureBox()
         Panel11 = New Panel()
-        LbAdmin = New Label()
-        LbRole = New Label()
         PictureBox9 = New PictureBox()
+        LbRole = New Label()
+        LbAdmin = New Label()
         PnDashboard = New Panel()
-        Label20 = New Label()
         PictureBox8 = New PictureBox()
+        Label20 = New Label()
         Sidebar = New Panel()
+        FlowLayoutPanel1 = New FlowLayoutPanel()
+        BtnBatal = New Button()
         Header.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox1.SuspendLayout()
@@ -91,6 +93,7 @@ Partial Class DataPetugas
         PnDashboard.SuspendLayout()
         CType(PictureBox8, ComponentModel.ISupportInitialize).BeginInit()
         Sidebar.SuspendLayout()
+        FlowLayoutPanel1.SuspendLayout()
         SuspendLayout()
         ' 
         ' Header
@@ -108,11 +111,11 @@ Partial Class DataPetugas
         ' LbLogout
         ' 
         LbLogout.AutoSize = True
-        LbLogout.Font = New Font("SF Pro Rounded", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        LbLogout.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
         LbLogout.ForeColor = Color.FromArgb(CByte(220), CByte(53), CByte(69))
         LbLogout.Location = New Point(683, 17)
         LbLogout.Name = "LbLogout"
-        LbLogout.Size = New Size(48, 16)
+        LbLogout.Size = New Size(54, 16)
         LbLogout.TabIndex = 2
         LbLogout.Text = "Logout"
         ' 
@@ -129,57 +132,57 @@ Partial Class DataPetugas
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Font = New Font("SF Pro Display", 18F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label1.Font = New Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point)
         Label1.ForeColor = Color.White
         Label1.Location = New Point(59, 11)
         Label1.Name = "Label1"
-        Label1.Size = New Size(490, 29)
+        Label1.Size = New Size(546, 29)
         Label1.TabIndex = 0
         Label1.Text = "SMKS YPK PURWAKARTA | SPP PAYMENTS"
         ' 
         ' GroupBox1
         ' 
+        GroupBox1.Controls.Add(FlowLayoutPanel1)
         GroupBox1.Controls.Add(CbLevel)
         GroupBox1.Controls.Add(TbPassword)
         GroupBox1.Controls.Add(TbNamaPetugas)
         GroupBox1.Controls.Add(Label8)
         GroupBox1.Controls.Add(Label7)
         GroupBox1.Controls.Add(Label6)
-        GroupBox1.Controls.Add(Button2)
-        GroupBox1.Controls.Add(Button1)
-        GroupBox1.Controls.Add(BtnHapus)
         GroupBox1.Controls.Add(TbUsername)
         GroupBox1.Controls.Add(TbIdPetugas)
         GroupBox1.Controls.Add(Label5)
         GroupBox1.Controls.Add(Label4)
-        GroupBox1.Font = New Font("SF Pro Display", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        GroupBox1.Location = New Point(317, 57)
+        GroupBox1.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
+        GroupBox1.Location = New Point(183, 68)
         GroupBox1.Name = "GroupBox1"
-        GroupBox1.Size = New Size(445, 221)
+        GroupBox1.Size = New Size(479, 221)
         GroupBox1.TabIndex = 19
         GroupBox1.TabStop = False
         GroupBox1.Text = "Input Data Petugas"
         ' 
         ' CbLevel
         ' 
+        CbLevel.DropDownStyle = ComboBoxStyle.DropDownList
         CbLevel.FormattingEnabled = True
-        CbLevel.Location = New Point(117, 175)
+        CbLevel.Items.AddRange(New Object() {"admin", "petugas"})
+        CbLevel.Location = New Point(135, 175)
         CbLevel.Name = "CbLevel"
         CbLevel.Size = New Size(121, 24)
         CbLevel.TabIndex = 14
         ' 
         ' TbPassword
         ' 
-        TbPassword.Location = New Point(117, 107)
+        TbPassword.Location = New Point(135, 107)
         TbPassword.Name = "TbPassword"
-        TbPassword.Size = New Size(121, 23)
+        TbPassword.Size = New Size(121, 22)
         TbPassword.TabIndex = 13
         ' 
         ' TbNamaPetugas
         ' 
-        TbNamaPetugas.Location = New Point(117, 141)
+        TbNamaPetugas.Location = New Point(135, 141)
         TbNamaPetugas.Name = "TbNamaPetugas"
-        TbNamaPetugas.Size = New Size(217, 23)
+        TbNamaPetugas.Size = New Size(193, 22)
         TbNamaPetugas.TabIndex = 12
         ' 
         ' Label8
@@ -187,7 +190,7 @@ Partial Class DataPetugas
         Label8.AutoSize = True
         Label8.Location = New Point(20, 179)
         Label8.Name = "Label8"
-        Label8.Size = New Size(38, 16)
+        Label8.Size = New Size(45, 16)
         Label8.TabIndex = 11
         Label8.Text = "Level"
         ' 
@@ -196,7 +199,7 @@ Partial Class DataPetugas
         Label7.AutoSize = True
         Label7.Location = New Point(20, 144)
         Label7.Name = "Label7"
-        Label7.Size = New Size(93, 16)
+        Label7.Size = New Size(109, 16)
         Label7.TabIndex = 10
         Label7.Text = "Nama Petugas"
         ' 
@@ -205,37 +208,37 @@ Partial Class DataPetugas
         Label6.AutoSize = True
         Label6.Location = New Point(20, 110)
         Label6.Name = "Label6"
-        Label6.Size = New Size(66, 16)
+        Label6.Size = New Size(75, 16)
         Label6.TabIndex = 9
         Label6.Text = "Password"
         ' 
-        ' Button2
+        ' BtnTambah
         ' 
-        Button2.BackColor = Color.FromArgb(CByte(0), CByte(123), CByte(255))
-        Button2.ForeColor = Color.White
-        Button2.Location = New Point(348, 105)
-        Button2.Name = "Button2"
-        Button2.Size = New Size(75, 28)
-        Button2.TabIndex = 8
-        Button2.Text = "Tambah"
-        Button2.UseVisualStyleBackColor = False
+        BtnTambah.BackColor = Color.FromArgb(CByte(0), CByte(123), CByte(255))
+        BtnTambah.ForeColor = Color.White
+        BtnTambah.Location = New Point(3, 3)
+        BtnTambah.Name = "BtnTambah"
+        BtnTambah.Size = New Size(75, 28)
+        BtnTambah.TabIndex = 8
+        BtnTambah.Text = "Tambah"
+        BtnTambah.UseVisualStyleBackColor = False
         ' 
-        ' Button1
+        ' BtnEdit
         ' 
-        Button1.BackColor = Color.FromArgb(CByte(40), CByte(167), CByte(69))
-        Button1.ForeColor = Color.White
-        Button1.Location = New Point(348, 139)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(75, 28)
-        Button1.TabIndex = 7
-        Button1.Text = "Edit"
-        Button1.UseVisualStyleBackColor = False
+        BtnEdit.BackColor = Color.FromArgb(CByte(40), CByte(167), CByte(69))
+        BtnEdit.ForeColor = Color.White
+        BtnEdit.Location = New Point(3, 37)
+        BtnEdit.Name = "BtnEdit"
+        BtnEdit.Size = New Size(75, 28)
+        BtnEdit.TabIndex = 7
+        BtnEdit.Text = "Edit"
+        BtnEdit.UseVisualStyleBackColor = False
         ' 
         ' BtnHapus
         ' 
         BtnHapus.BackColor = Color.FromArgb(CByte(220), CByte(53), CByte(69))
         BtnHapus.ForeColor = Color.White
-        BtnHapus.Location = New Point(348, 173)
+        BtnHapus.Location = New Point(3, 71)
         BtnHapus.Name = "BtnHapus"
         BtnHapus.Size = New Size(75, 28)
         BtnHapus.TabIndex = 6
@@ -244,16 +247,16 @@ Partial Class DataPetugas
         ' 
         ' TbUsername
         ' 
-        TbUsername.Location = New Point(117, 71)
+        TbUsername.Location = New Point(135, 71)
         TbUsername.Name = "TbUsername"
-        TbUsername.Size = New Size(121, 23)
+        TbUsername.Size = New Size(121, 22)
         TbUsername.TabIndex = 4
         ' 
         ' TbIdPetugas
         ' 
-        TbIdPetugas.Location = New Point(117, 37)
+        TbIdPetugas.Location = New Point(135, 37)
         TbIdPetugas.Name = "TbIdPetugas"
-        TbIdPetugas.Size = New Size(84, 23)
+        TbIdPetugas.Size = New Size(84, 22)
         TbIdPetugas.TabIndex = 3
         ' 
         ' Label5
@@ -261,7 +264,7 @@ Partial Class DataPetugas
         Label5.AutoSize = True
         Label5.Location = New Point(20, 74)
         Label5.Name = "Label5"
-        Label5.Size = New Size(67, 16)
+        Label5.Size = New Size(78, 16)
         Label5.TabIndex = 1
         Label5.Text = "Username"
         ' 
@@ -270,17 +273,17 @@ Partial Class DataPetugas
         Label4.AutoSize = True
         Label4.Location = New Point(20, 40)
         Label4.Name = "Label4"
-        Label4.Size = New Size(71, 16)
+        Label4.Size = New Size(83, 16)
         Label4.TabIndex = 0
         Label4.Text = "ID Petugas"
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Font = New Font("SF Pro Text", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label3.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
         Label3.Location = New Point(582, 295)
         Label3.Name = "Label3"
-        Label3.Size = New Size(69, 16)
+        Label3.Size = New Size(72, 16)
         Label3.TabIndex = 23
         Label3.Text = "Cari Data"
         ' 
@@ -293,21 +296,24 @@ Partial Class DataPetugas
         ' 
         ' DataGridPetugas
         ' 
+        DataGridPetugas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         DataGridPetugas.BackgroundColor = Color.FromArgb(CByte(120), CByte(166), CByte(200))
         DataGridPetugas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridPetugas.Location = New Point(183, 321)
         DataGridPetugas.Name = "DataGridPetugas"
+        DataGridPetugas.RowHeadersVisible = False
+        DataGridPetugas.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         DataGridPetugas.Size = New Size(716, 207)
         DataGridPetugas.TabIndex = 21
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Font = New Font("SF Pro Display", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label2.Font = New Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point)
         Label2.ForeColor = SystemColors.ControlText
         Label2.Location = New Point(183, 292)
         Label2.Name = "Label2"
-        Label2.Size = New Size(126, 23)
+        Label2.Size = New Size(132, 24)
         Label2.TabIndex = 20
         Label2.Text = "Data Petugas"
         ' 
@@ -320,17 +326,6 @@ Partial Class DataPetugas
         PnJurusan.Size = New Size(168, 36)
         PnJurusan.TabIndex = 2
         ' 
-        ' Label14
-        ' 
-        Label14.AutoSize = True
-        Label14.Font = New Font("SF Pro Rounded", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label14.ForeColor = Color.White
-        Label14.Location = New Point(45, 9)
-        Label14.Name = "Label14"
-        Label14.Size = New Size(54, 16)
-        Label14.TabIndex = 0
-        Label14.Text = "Jurusan"
-        ' 
         ' PictureBox2
         ' 
         PictureBox2.Image = My.Resources.Resources.icon_jurusan1
@@ -341,6 +336,17 @@ Partial Class DataPetugas
         PictureBox2.TabIndex = 1
         PictureBox2.TabStop = False
         ' 
+        ' Label14
+        ' 
+        Label14.AutoSize = True
+        Label14.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
+        Label14.ForeColor = Color.White
+        Label14.Location = New Point(45, 9)
+        Label14.Name = "Label14"
+        Label14.Size = New Size(61, 16)
+        Label14.TabIndex = 0
+        Label14.Text = "Jurusan"
+        ' 
         ' PnKelas
         ' 
         PnKelas.Controls.Add(PictureBox3)
@@ -349,17 +355,6 @@ Partial Class DataPetugas
         PnKelas.Name = "PnKelas"
         PnKelas.Size = New Size(168, 36)
         PnKelas.TabIndex = 3
-        ' 
-        ' Label15
-        ' 
-        Label15.AutoSize = True
-        Label15.Font = New Font("SF Pro Rounded", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label15.ForeColor = Color.White
-        Label15.Location = New Point(45, 9)
-        Label15.Name = "Label15"
-        Label15.Size = New Size(40, 16)
-        Label15.TabIndex = 0
-        Label15.Text = "Kelas"
         ' 
         ' PictureBox3
         ' 
@@ -371,6 +366,17 @@ Partial Class DataPetugas
         PictureBox3.TabIndex = 1
         PictureBox3.TabStop = False
         ' 
+        ' Label15
+        ' 
+        Label15.AutoSize = True
+        Label15.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
+        Label15.ForeColor = Color.White
+        Label15.Location = New Point(45, 9)
+        Label15.Name = "Label15"
+        Label15.Size = New Size(46, 16)
+        Label15.TabIndex = 0
+        Label15.Text = "Kelas"
+        ' 
         ' PnSiswa
         ' 
         PnSiswa.Controls.Add(PictureBox4)
@@ -379,17 +385,6 @@ Partial Class DataPetugas
         PnSiswa.Name = "PnSiswa"
         PnSiswa.Size = New Size(168, 36)
         PnSiswa.TabIndex = 4
-        ' 
-        ' Label16
-        ' 
-        Label16.AutoSize = True
-        Label16.Font = New Font("SF Pro Rounded", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label16.ForeColor = Color.White
-        Label16.Location = New Point(45, 10)
-        Label16.Name = "Label16"
-        Label16.Size = New Size(42, 16)
-        Label16.TabIndex = 0
-        Label16.Text = "Siswa"
         ' 
         ' PictureBox4
         ' 
@@ -401,6 +396,17 @@ Partial Class DataPetugas
         PictureBox4.TabIndex = 1
         PictureBox4.TabStop = False
         ' 
+        ' Label16
+        ' 
+        Label16.AutoSize = True
+        Label16.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
+        Label16.ForeColor = Color.White
+        Label16.Location = New Point(45, 10)
+        Label16.Name = "Label16"
+        Label16.Size = New Size(48, 16)
+        Label16.TabIndex = 0
+        Label16.Text = "Siswa"
+        ' 
         ' PnPetugas
         ' 
         PnPetugas.Controls.Add(Label13)
@@ -409,6 +415,17 @@ Partial Class DataPetugas
         PnPetugas.Name = "PnPetugas"
         PnPetugas.Size = New Size(168, 36)
         PnPetugas.TabIndex = 5
+        ' 
+        ' Label13
+        ' 
+        Label13.AutoSize = True
+        Label13.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
+        Label13.ForeColor = Color.White
+        Label13.Location = New Point(45, 10)
+        Label13.Name = "Label13"
+        Label13.Size = New Size(64, 16)
+        Label13.TabIndex = 1
+        Label13.Text = "Petugas"
         ' 
         ' PictureBox5
         ' 
@@ -420,17 +437,6 @@ Partial Class DataPetugas
         PictureBox5.TabIndex = 0
         PictureBox5.TabStop = False
         ' 
-        ' Label13
-        ' 
-        Label13.AutoSize = True
-        Label13.Font = New Font("SF Pro Rounded", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label13.ForeColor = Color.White
-        Label13.Location = New Point(45, 10)
-        Label13.Name = "Label13"
-        Label13.Size = New Size(56, 16)
-        Label13.TabIndex = 1
-        Label13.Text = "Petugas"
-        ' 
         ' PnTransaksi
         ' 
         PnTransaksi.Controls.Add(Label17)
@@ -439,6 +445,17 @@ Partial Class DataPetugas
         PnTransaksi.Name = "PnTransaksi"
         PnTransaksi.Size = New Size(168, 36)
         PnTransaksi.TabIndex = 6
+        ' 
+        ' Label17
+        ' 
+        Label17.AutoSize = True
+        Label17.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
+        Label17.ForeColor = Color.White
+        Label17.Location = New Point(45, 10)
+        Label17.Name = "Label17"
+        Label17.Size = New Size(76, 16)
+        Label17.TabIndex = 1
+        Label17.Text = "Transaksi"
         ' 
         ' PictureBox6
         ' 
@@ -450,17 +467,6 @@ Partial Class DataPetugas
         PictureBox6.TabIndex = 0
         PictureBox6.TabStop = False
         ' 
-        ' Label17
-        ' 
-        Label17.AutoSize = True
-        Label17.Font = New Font("SF Pro Rounded", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label17.ForeColor = Color.White
-        Label17.Location = New Point(45, 10)
-        Label17.Name = "Label17"
-        Label17.Size = New Size(64, 16)
-        Label17.TabIndex = 1
-        Label17.Text = "Transaksi"
-        ' 
         ' PnLaporan
         ' 
         PnLaporan.Controls.Add(Label18)
@@ -469,6 +475,17 @@ Partial Class DataPetugas
         PnLaporan.Name = "PnLaporan"
         PnLaporan.Size = New Size(168, 36)
         PnLaporan.TabIndex = 7
+        ' 
+        ' Label18
+        ' 
+        Label18.AutoSize = True
+        Label18.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
+        Label18.ForeColor = Color.White
+        Label18.Location = New Point(45, 10)
+        Label18.Name = "Label18"
+        Label18.Size = New Size(62, 16)
+        Label18.TabIndex = 1
+        Label18.Text = "Riwayat"
         ' 
         ' PictureBox7
         ' 
@@ -479,17 +496,6 @@ Partial Class DataPetugas
         PictureBox7.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox7.TabIndex = 0
         PictureBox7.TabStop = False
-        ' 
-        ' Label18
-        ' 
-        Label18.AutoSize = True
-        Label18.Font = New Font("SF Pro Rounded", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label18.ForeColor = Color.White
-        Label18.Location = New Point(45, 10)
-        Label18.Name = "Label18"
-        Label18.Size = New Size(54, 16)
-        Label18.TabIndex = 1
-        Label18.Text = "Riwayat"
         ' 
         ' Panel11
         ' 
@@ -502,28 +508,6 @@ Partial Class DataPetugas
         Panel11.Size = New Size(100, 100)
         Panel11.TabIndex = 8
         ' 
-        ' LbAdmin
-        ' 
-        LbAdmin.AutoSize = True
-        LbAdmin.Font = New Font("SF Pro Text", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        LbAdmin.ForeColor = Color.White
-        LbAdmin.Location = New Point(5, 63)
-        LbAdmin.Name = "LbAdmin"
-        LbAdmin.Size = New Size(90, 16)
-        LbAdmin.TabIndex = 0
-        LbAdmin.Text = "Hidayatulloh"
-        ' 
-        ' LbRole
-        ' 
-        LbRole.AutoSize = True
-        LbRole.Font = New Font("SF Pro Text", 8.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        LbRole.ForeColor = Color.White
-        LbRole.Location = New Point(30, 82)
-        LbRole.Name = "LbRole"
-        LbRole.Size = New Size(40, 13)
-        LbRole.TabIndex = 1
-        LbRole.Text = "Admin"
-        ' 
         ' PictureBox9
         ' 
         PictureBox9.Image = My.Resources.Resources.icon_user
@@ -534,6 +518,28 @@ Partial Class DataPetugas
         PictureBox9.TabIndex = 2
         PictureBox9.TabStop = False
         ' 
+        ' LbRole
+        ' 
+        LbRole.AutoSize = True
+        LbRole.Font = New Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point)
+        LbRole.ForeColor = Color.White
+        LbRole.Location = New Point(30, 82)
+        LbRole.Name = "LbRole"
+        LbRole.Size = New Size(36, 13)
+        LbRole.TabIndex = 1
+        LbRole.Text = "Admin"
+        ' 
+        ' LbAdmin
+        ' 
+        LbAdmin.AutoSize = True
+        LbAdmin.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
+        LbAdmin.ForeColor = Color.White
+        LbAdmin.Location = New Point(5, 63)
+        LbAdmin.Name = "LbAdmin"
+        LbAdmin.Size = New Size(94, 16)
+        LbAdmin.TabIndex = 0
+        LbAdmin.Text = "Hidayatulloh"
+        ' 
         ' PnDashboard
         ' 
         PnDashboard.Controls.Add(PictureBox8)
@@ -542,17 +548,6 @@ Partial Class DataPetugas
         PnDashboard.Name = "PnDashboard"
         PnDashboard.Size = New Size(168, 36)
         PnDashboard.TabIndex = 9
-        ' 
-        ' Label20
-        ' 
-        Label20.AutoSize = True
-        Label20.Font = New Font("SF Pro Rounded", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label20.ForeColor = Color.White
-        Label20.Location = New Point(45, 10)
-        Label20.Name = "Label20"
-        Label20.Size = New Size(73, 16)
-        Label20.TabIndex = 0
-        Label20.Text = "Dashboard"
         ' 
         ' PictureBox8
         ' 
@@ -563,6 +558,17 @@ Partial Class DataPetugas
         PictureBox8.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox8.TabIndex = 1
         PictureBox8.TabStop = False
+        ' 
+        ' Label20
+        ' 
+        Label20.AutoSize = True
+        Label20.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point)
+        Label20.ForeColor = Color.White
+        Label20.Location = New Point(45, 10)
+        Label20.Name = "Label20"
+        Label20.Size = New Size(84, 16)
+        Label20.TabIndex = 0
+        Label20.Text = "Dashboard"
         ' 
         ' Sidebar
         ' 
@@ -581,6 +587,28 @@ Partial Class DataPetugas
         Sidebar.Size = New Size(168, 540)
         Sidebar.TabIndex = 4
         ' 
+        ' FlowLayoutPanel1
+        ' 
+        FlowLayoutPanel1.Controls.Add(BtnTambah)
+        FlowLayoutPanel1.Controls.Add(BtnEdit)
+        FlowLayoutPanel1.Controls.Add(BtnHapus)
+        FlowLayoutPanel1.Controls.Add(BtnBatal)
+        FlowLayoutPanel1.Location = New Point(366, 62)
+        FlowLayoutPanel1.Name = "FlowLayoutPanel1"
+        FlowLayoutPanel1.Size = New Size(105, 133)
+        FlowLayoutPanel1.TabIndex = 24
+        ' 
+        ' BtnBatal
+        ' 
+        BtnBatal.BackColor = Color.DimGray
+        BtnBatal.ForeColor = Color.White
+        BtnBatal.Location = New Point(3, 105)
+        BtnBatal.Name = "BtnBatal"
+        BtnBatal.Size = New Size(75, 28)
+        BtnBatal.TabIndex = 9
+        BtnBatal.Text = "Batal"
+        BtnBatal.UseVisualStyleBackColor = False
+        ' 
         ' DataPetugas
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -595,6 +623,7 @@ Partial Class DataPetugas
         Controls.Add(Header)
         Controls.Add(Sidebar)
         Name = "DataPetugas"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "DataPetugas"
         Header.ResumeLayout(False)
         Header.PerformLayout()
@@ -627,6 +656,7 @@ Partial Class DataPetugas
         PnDashboard.PerformLayout()
         CType(PictureBox8, ComponentModel.ISupportInitialize).EndInit()
         Sidebar.ResumeLayout(False)
+        FlowLayoutPanel1.ResumeLayout(False)
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -635,8 +665,8 @@ Partial Class DataPetugas
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label1 As Label
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button1 As Button
+    Friend WithEvents BtnTambah As Button
+    Friend WithEvents BtnEdit As Button
     Friend WithEvents BtnHapus As Button
     Friend WithEvents TbUsername As TextBox
     Friend WithEvents TbIdPetugas As TextBox
@@ -678,4 +708,6 @@ Partial Class DataPetugas
     Friend WithEvents PictureBox8 As PictureBox
     Friend WithEvents Label20 As Label
     Friend WithEvents Sidebar As Panel
+    Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
+    Friend WithEvents BtnBatal As Button
 End Class
